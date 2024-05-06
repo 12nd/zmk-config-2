@@ -93,15 +93,15 @@
             display-name = "lower";
 // TODO: Some binds are waiting for shifted keycode support.
 // ------------------------------------------------------------------------------------------------------------
-// |   ~   |  F1 |  F2 |  F3  |  F4  |  F5  |                   |  F6  |  F7   |  F8  |  F9  |  F10  |  F11  |
-// |   `   |  1  |  2  |  3   |  4   |  5   |                   |  6   |  7    |  8   |  9   |   0   |  DEL  |
-// |       |     |     |      |      |      |                   |  [   |  ]    |  -   |  =   |   \   |  F12  |
-// |       |     |     |      |      |      |        |  |       |      |       |      |      |       |       |
-//               |     |      |      |      |        |  |       |      |       |      |      |
+// |   ~    |  F1 |  F2 |  F3  |  F4  |  F5  |                   |  F6  |  F7   |  F8  |  F9  |  F10  |  F11  |
+// |   `    |  1  |  2  |  3   |  4   |  5   |                   |  6   |  7    |  8   |  9   |   0   |  DEL  |
+// |SK_SHIFT|     |     |      |      |      |                   |  [   |  ]    |  -   |  =   |   \   |  F12  |
+// |        |     |     |      |      |      |        |  |       |      |       |      |      |       |       |
+//                |     |      |      |      |        |  |       |      |       |      |      |
             bindings = <
 &kp LS(GRAVE) &kp F1    &kp F2    &kp F3    &kp F4    &kp F5                   &kp F6    &kp F7    &kp F8    &kp F9    &kp F10   &kp F11
 &kp GRAVE     &kp KP_N1 &kp KP_N2 &kp KP_N3 &kp KP_N4 &kp KP_N5                &kp KP_N6 &kp KP_N7 &kp KP_N8 &kp KP_N9 &kp KP_N0 &kp DEL
-&trans        &none     &none     &none     &none     &none                    &kp LBKT  &kp RBKT  &kp MINUS &kp EQUAL &kp BSLH  &kp F12
+&sk LSHIFT    &none     &none     &none     &none     &none                    &kp LBKT  &kp RBKT  &kp MINUS &kp EQUAL &kp BSLH  &kp F12
 &trans        &none     &none     &none     &none     &none     &trans  &trans &none     &none     &none     &none     &none     &trans
 					    &trans    &trans    &trans    &trans    &trans  &trans &trans    &trans    &trans    &trans
             >;
@@ -112,17 +112,17 @@
         raise_layer {
             display-name = "raise";
 // ------------------------------------------------------------------------------------------------------------
-// |       | PSCR | SLCK | PAUSE |       |      |                |      |      |      |      |       |       |
-// |       | INS  | HOME | PGUP  |       | NUM  |                |      |      |      |      |       |       |
-// |       | DEL  | END  | PGDN  |       | CAPS |                | LEFT | DOWN |  UP  | RIGHT|       |       |
-// |       | UNDO | CUT  | COPY  | PASTE |      | GAME |  | MAC  |      |      |      |      |       |       |
-//                |      |       |       |      |      |  |      |      |      |      |      |
+// |        | PSCR | SLCK | PAUSE |       |      |                |      |      |      |      |       |       |
+// |        | INS  | HOME | PGUP  |       | NUM  |                |      |      |      |      |       |       |
+// |CAPSWORD| DEL  | END  | PGDN  |       | CAPS |                | LEFT | DOWN |  UP  | RIGHT|       |       |
+// |        | UNDO | CUT  | COPY  | PASTE |      | GAME |  | MAC  |      |      |      |      |       |       |
+//                 |      |       |       |      |      |  |      |      |      |      |      |
             bindings = <
-&trans &kp PSCRN  &kp SLCK  &kp PAUSE_BREAK &none       &none                          &none    &none    &none  &none     &none &none
-&trans &kp INS    &kp HOME  &kp PG_UP       &none       &kp KP_NUM                     &none    &none    &none  &none     &none &none
-&trans &kp DEL    &kp END   &kp PG_DN       &none       &kp CLCK                       &kp LEFT &kp DOWN &kp UP &kp RIGHT &none &none
-&trans &kp K_UNDO &kp K_CUT &kp K_COPY      &kp K_PASTE &none      &tog GAME  &tog MAC &none    &none    &none  &none     &none &trans
-                  &trans    &trans          &trans      &trans     &trans     &trans   &trans   &trans   &trans &trans
+&trans     &kp PSCRN  &kp SLCK  &kp PAUSE_BREAK &none       &none                          &none    &none    &none  &none     &none &none
+&trans     &kp INS    &kp HOME  &kp PG_UP       &none       &kp KP_NUM                     &none    &none    &none  &none     &none &none
+&caps_word &kp DEL    &kp END   &kp PG_DN       &none       &kp CLCK                       &kp LEFT &kp DOWN &kp UP &kp RIGHT &none &none
+&trans     &kp K_UNDO &kp K_CUT &kp K_COPY      &kp K_PASTE &none      &tog GAME  &tog MAC &none    &none    &none  &none     &none &trans
+                      &trans    &trans          &trans      &trans     &trans     &trans   &trans   &trans   &trans &trans
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &inc_dec_kp PG_UP PG_DN>;
@@ -130,18 +130,18 @@
 
         adjust_layer {
 // ----------------------------------------------------------------------------------------------------------------------------
-// | OUTTOG |  BT0    |  BT1    |   BT2   |   BT3   |  BTCLR  |                  |      |      |       |      |       |       |
-// | EXTPWR |         |         |         |         | SOFTOFF |                  |      |      |       |      |       |       |
+// | OUTTOG |  BT0    |  BT1    |   BT2   |   BT3   |   BT4   |                  |      |      |       |      |       |       |
+// | EXTPWR |  BTCLR  |         |         |         | SOFTOFF |                  |      |      |       |      |       |       |
 // |        |         |         |         |         |         |                  |      |      |       |      |       |       |
 // |        |         |         |         |         |         |         | |      |      |      |       |      |       |       |
 //                    |         |         |         |         |         | |      |      |      |       |      |
             display-name = "adjust";
             bindings = <
-&out OUT_TOG      &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_CLR              &none &none &none &none &none &none
-&ext_power EP_TOG &none        &none        &none        &none        &soft_off               &none &none &none &none &none &none
-&none             &none        &none        &none        &none        &none                   &none &none &none &none &none &none
-&none             &none        &none        &none        &none        &none      &none  &none &none &none &none &none &none &none
-                               &none        &none        &none        &none      &none  &none &none &none &none &none
+&out OUT_TOG      &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4              &none &none &none &none &none &none
+&ext_power EP_TOG &bt BT_CLR   &none        &none        &none        &soft_off                 &none &none &none &none &none &none
+&none             &none        &none        &none        &none        &none                     &none &none &none &none &none &none
+&none             &none        &none        &none        &none        &none        &none  &none &none &none &none &none &none &none
+                               &none        &none        &none        &none        &none  &none &none &none &none &none
             >;
         };
 
